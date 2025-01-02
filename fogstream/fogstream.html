@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Fog</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Jacquarda+Bastarda+9&family=Silkscreen&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-image: url("img/sf.GIF");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        h1, h3, p {
+            margin: 0;
+        }
+
+        h1 {
+            font-family: 'Jacquarda Bastarda 9', sans-serif;
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 20px;
+            color: yellow;
+        }
+
+        h1:hover {
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 
+                        0 0 20px rgba(255, 255, 255, 0.6); 
+        }
+
+        h3 {
+            font-family: 'Silkscreen', sans-serif;
+            font-size: 14px;
+            margin-bottom: 20px;
+            color: black; /* Changed h3 color to black */
+        }
+
+        p {
+            font-family: "Pixelify Sans", system-ui;
+            font-size: 17px;
+            color: white; /* Changed text color to black */
+        }
+        img + p {
+        color: black;
+    }
+        /* Main profile container */
+        .profile-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+           
+        }
+
+        .profile-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-info img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+
+        .profile-info h3 {
+            margin: 0;
+        }
+
+        .about-section {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px dashed #999;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+
+        .about-section h3 {
+            margin-bottom: 10px;
+        }
+
+        .friends-section {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #999;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-evenly;
+            text-align: center;
+            color: #fff;
+        }
+        .friends-section h3 {
+        margin-top: 40px;
+        font-size: medium;
+        text-align: left;
+        margin-left: 20px; /* Moves the h3 to the left */
+        margin-bottom: 10px; /* Adjusts spacing below the heading */
+        color: white; /* Ensure it's readable */
+    }
+
+        .friends-section div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .friends-section img {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .friends-section img:hover {
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+
+        .friends-section p {
+            font-size: 12px;
+            color: white; /* Changed friend's names color to black */
+            margin-top: 5px;
+        }
+
+        #topnav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 20px 50px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index: 1000;
+        }
+
+        #topnav div {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        #topnav h1 {
+            font-size: 36px;
+            margin: 0;
+        }
+
+        #topnav h3 a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .posts-feed {
+            margin-top: 40px; /* Moved posts closer to playlist section */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .posts-feed h3 {
+            color: black; 
+            font-size: 30pt;
+        }
+
+        .post-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 90%;
+            max-width: 500px;
+            margin: 30px 0;
+            padding: 60px 20px 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position:relative;
+        }
+
+        .post-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .post-container p {
+            text-align: center;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            position:absolute;
+            top: 10px;
+            left: 10px;
+        }
+
+        .profile img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .profile span {
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .interaction-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .like-button {
+            display: flex;
+            align-items: center;
+            margin-right: 15px;
+        }
+
+        .like-button button {
+            background-color: #ddd;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .like-button button:hover {
+            background-color: #ccc;
+        }
+
+        .like-button button:active {
+            background-color: #bbb;
+        }
+
+        .pixel-heart {
+            font-size: 16px;
+            color: red;
+            text-shadow: 
+                1px 1px 0px black,
+                -1px 1px 0px black,
+                1px -1px 0px black,
+                -1px -1px 0px black;
+            image-rendering: pixelated;
+            margin-right: 8px;
+        }
+
+        .comment-section input {
+            width: 200px;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .comment-section button {
+            padding: 8px 12px;
+            border: none;
+            background-color: #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .comment-section button:hover {
+            background-color: #ccc;
+        }
+
+        .comment-section button:active {
+            background-color: #bbb;
+        }
+
+        .playlist-section {
+            margin-top: 10px; /* Adjusted for proximity to posts */
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            background-color: rgba(0, 0, 0, 0.3);
+            text-align: center;
+            font-family: "Pixelify Sans", system-ui;
+            color: white;
+            font-size: 14pt;
+        }
+
+        .playlist-section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .playlist-section li {
+            margin: 10px 0;
+        }
+
+        .footer-section {
+            margin-top: 40px;
+            text-align: center;
+            color: #fff;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Profile Container -->
+    <div class="profile-container">
+        <!-- Modified h1 for hover effect and clickable link -->
+        <a href="../index.html" style="text-decoration: none;">
+            <h1>The Fog</h1>
+        </a>
+        <!-- Profile Info -->
+        <div class="profile-info box-style">
+            <img src="img/avatar.png" alt="Profile Picture">
+            <div>
+                <h3>@anthony_thedesigner</h3>
+                <p>San Francisco, California, U.S.A</p>
+                <p>Senior Design Student at the University of San Francisco</p>
+            </div>
+        </div>
+        
+        
+        
+
+        <!-- About Section -->
+        <div class="about-section">
+            <h3>About Me</h3>
+            <p>Design lover. Music fan. Hip-hop enthusiast. Currently exploring product and UX design.</p>
+            <p>Plans to visit to Berlin after graduation, enjoy the creative scene, and keep learning about design!</p>
+        </div>
+
+        <!-- Friends Section -->
+<div class="friends-section">
+    <h3>Top Friends</h3>
+    <div>
+        <img src="img/brenda.png" alt="Brenda G." onclick="showPopup('Brenda G.', 'Fort Myers, Florida, U.S.A', 'img/brenda.png', [
+            'Zodiac: Sagittarius',
+            'Interests: Fitness, Comedy, Gaming',
+            'Hobbies: Working Out, Exploring, Cooking, Trying New Foods',
+            'Favorite Food: Shrimp Tempura',
+            'Favorite Album: Astroworld by Travis Scott'
+        ])">
+        <p>Brenda G.</p>
+    </div>
+    <div>
+        <img src="img/tucker.png" alt="Tucker C." onclick="showPopup('Tucker C.', 'Boulder, Colorado, U.S.A', 'img/tucker.png', [
+            'Zodiac: Leo',
+            'Interests: Film, Literature, History',
+            'Hobbies: Chess, Hiking, Gaming',
+            'Favorite Food: Cheeseburger',
+            'Favorite Album: Tha Carter IV by Lil Wayne'
+        ])">
+        <p>Tucker C.</p>
+    </div>
+    <div>
+        <img src="img/sarah.png" alt="Sarah P." onclick="showPopup('Sarah P.', 'San Francisco, California, U.S.A', 'img/sarah.png', [
+            'Zodiac: Aries',
+            'Interests: Philosophy, Film, Art',
+            'Hobbies: Puzzles, Cooking, Thrifting',
+            'Favorite Food: Salmon on a nice bed of greens',
+            'Favorite Album: Born This Way by Lady Gaga'
+        ])">
+        <p>Sarah P.</p>
+    </div>
+    <div>
+        <img src="img/joshua.png" alt="Joshua M." onclick="showPopup('Joshua M.', 'San Francisco, California, U.S.A', 'img/joshua.png', [
+            'Zodiac: Aquarius',
+            'Interests: Fashion, Photography, Music',
+            'Hobbies: Photography, Making Music, Reading',
+            'Favorite Food: Papusa’s',
+            'Favorite Album: boy by 2hollis'
+        ])">
+        <p>Joshua M.</p>
+    </div>
+    <div>
+        <img src="img/paul.png" alt="Paul C." onclick="showPopup('Paul C.', 'Portland, Oregon, U.S.A', 'img/paul.png', [
+            'Zodiac: Sagittarius',
+            'Interests: Design, Music, Cinema',
+            'Hobbies: Cookies, Traveling, Watching Films',
+            'Favorite Food: Pasta',
+            'Favorite Album: MM..FOOD by MF DOOM'
+        ])">
+        <p>Paul C.</p>
+    </div>
+</div>
+
+
+        <!-- Playlist Section -->
+        <div class="playlist-section">
+            <h3>Songs of the Week Playlist</h3>
+            <ul>
+                <li>Weyes Blood - Andromeda</li>
+                <li>Dean Blunt - 9</li>
+                <li>Vegyn - Mushroom Abolitionist</li>
+                <li>Niontay - Rapidolamusica407</li>
+                <li>emory - double dog</li>
+                <li>Kitty Craft - Alright</li>
+                <li>Men I Trust - Sugar</li>
+            </ul>
+        </div>
+
+       <!-- Posts Section -->
+       <div class="posts-feed">
+
+        <!-- Posts feed -->
+<div class="posts-feed">
+    <h3>Posts</h3>
+    <!-- Post 1 -->
+    <div class="post-container">
+        <div class="profile">
+            <img src="img/avatar.png" alt="Anthony">
+            <span>@anthony_thedesigner</span>
+        </div>
+        <img src="img/beachdog.gif" alt="Doom Digging">
+        <p>#gifoftheweek</p>
+        <div class="interaction-section">
+            <div class="like-button">
+                <button><span class="pixel-heart">♥</span>Like</button>
+            </div>
+            <div class="comment-section">
+                <input type="text" placeholder="Add a comment...">
+                <button>Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Post 2 -->
+    <div class="post-container">
+        <div class="profile">
+            <img src="img/avatar.png" alt="Anthony">
+            <span>@anthony_thedesigner</span>
+        </div>
+        <img src="img/amoeba.jpg" alt="Amoeba Music on Haight Street">
+        <p>Was walking by Amoeba Music on Haight Street and captured this picture. The lights looked so bright as they contrasted with the dark sky.</p>
+        <div class="interaction-section">
+            <div class="like-button">
+                <button><span class="pixel-heart">♥</span>Like</button>
+            </div>
+            <div class="comment-section">
+                <input type="text" placeholder="Add a comment...">
+                <button>Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Post 3 -->
+    <div class="post-container">
+        <div class="profile">
+            <img src="img/avatar.png" alt="Anthony">
+            <span>@anthony_thedesigner</span>
+        </div>
+        <img src="img/mondays.jpg" alt="#relatable">
+        <p>#relatable</p>
+        <div class="interaction-section">
+            <div class="like-button">
+                <button><span class="pixel-heart">♥</span>Like</button>
+            </div>
+            <div class="comment-section">
+                <input type="text" placeholder="Add a comment...">
+                <button>Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Post 4 -->
+    <div class="post-container">
+        <div class="profile">
+            <img src="img/avatar.png" alt="Anthony">
+            <span>@anthony_thedesigner</span>
+        </div>
+        <img src="img/thrifting.jpg" alt="Saw these cool jackets when I was out thrifting in The Mission">
+        <p>Saw these cool jackets when I was out thrifting in The Mission</p>
+        <div class="interaction-section">
+            <div class="like-button">
+                <button><span class="pixel-heart">♥</span>Like</button>
+            </div>
+            <div class="comment-section">
+                <input type="text" placeholder="Add a comment...">
+                <button>Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Post 5 -->
+    <div class="post-container">
+        <div class="profile">
+            <img src="img/avatar.png" alt="Anthony">
+            <span>@anthony_thedesigner</span>
+        </div>
+        <img src="img/beach.jpg" alt="Captured a rainbow at the beach.">
+        <p>Captured a rainbow at the beach.</p>
+        <div class="interaction-section">
+            <div class="like-button">
+                <button><span class="pixel-heart">♥</span>Like</button>
+            </div>
+            <div class="comment-section">
+                <input type="text" placeholder="Add a comment...">
+                <button>Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Post 6 -->
+    <div class="post-container">
+        <div class="profile">
+            <img src="img/avatar.png" alt="Anthony">
+            <span>@anthony_thedesigner</span>
+        </div>
+        <img src="img/yasmin.jpg" alt="One of my favorite places to eat in The Mission">
+        <p>One of my favorite places to eat in The Mission #yasmin.</p>
+        <div class="interaction-section">
+            <div class="like-button">
+                <button><span class="pixel-heart">♥</span>Like</button>
+            </div>
+            <div class="comment-section">
+                <input type="text" placeholder="Add a comment...">
+                <button>Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Post 7 -->
+    <div class="post-container">
+        <div class="profile">
+            <img src="img/avatar.png" alt="Anthony">
+            <span>@anthony_thedesigner</span>
+        </div>
+        <img src="img/walkdoom.jpg" alt="On a walk with my dog Doom">
+        <p>On a walk with my dog Doom</p>
+        <div class="interaction-section">
+            <div class="like-button">
+                <button><span class="pixel-heart">♥</span>Like</button>
+            </div>
+            <div class="comment-section">
+                <input type="text" placeholder="Add a comment...">
+                <button>Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Post 8 -->
+    <div class="post-container">
+        <div class="profile">
+            <img src="img/avatar.png" alt="Anthony">
+            <span>@anthony_thedesigner</span>
+        </div>
+        <img src="img/church.jpg" alt="I am fond of the shade of pink they used for this church in North Beach.">
+        <p>I am fond of the shade of pink they used for this church in North Beach.</p>
+        <div class="interaction-section">
+            <div class="like-button">
+                <button><span class="pixel-heart">♥</span>Like</button>
+            </div>
+            <div class="comment-section">
+                <input type="text" placeholder="Add a comment...">
+                <button>Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Post 9 -->
+    <div class="post-container">
+        <div class="profile">
+            <img src="img/avatar.png" alt="Anthony">
+            <span>@anthony_thedesigner</span>
+        </div>
+        <img src="img/greencar.jpg" alt="Saw this cool Volvo at an auto shop near campus.">
+        <p>Saw this cool Volvo at an auto shop near campus.</p>
+        <div class="interaction-section">
+            <div class="like-button">
+                <button><span class="pixel-heart">♥</span>Like</button>
+            </div>
+            <div class="comment-section">
+                <input type="text" placeholder="Add a comment...">
+                <button>Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Post 10 -->
+    <div class="post-container">
+        <div class="profile">
+            <img src="img/avatar.png" alt="Anthony">
+            <span>@anthony_thedesigner</span>
+        </div>
+        <img src="img/sealion.jpg" alt="Look at these majestic Sea Lions at Pier 39">
+        <p>Look at these majestic Sea Lions at Pier 39</p>
+        <div class="interaction-section">
+            <div class="like-button">
+                <button><span class="pixel-heart">♥</span>Like</button>
+            </div>
+            <div class="comment-section">
+                <input type="text" placeholder="Add a comment...">
+                <button>Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Post 11 -->
+    <div class="post-container">
+        <div class="profile">
+            <img src="img/avatar.png" alt="Anthony">
+            <span>@anthony_thedesigner</span>
+        </div>
+        <img src="img/turntable.jpg" alt="Unco Frank's plays the restaurant music on turntables which is unique.">
+        <p>Unco Frank's plays the restaurant music on turntables which is unique.</p>
+        <div class="interaction-section">
+            <div class="like-button">
+                <button><span class="pixel-heart">♥</span>Like</button>
+            </div>
+            <div class="comment-section">
+                <input type="text" placeholder="Add a comment...">
+                <button>Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Post 12 -->
+    <div class="post-container">
+        <div class="profile">
+            <img src="img/avatar.png" alt="Anthony">
+            <span>@anthony_thedesigner</span>
+        </div>
+        <img src="img/running.jpg" alt="Went on a jog with my dog today.">
+        <p>Went on a jog with my dog today</p>
+        <div class="interaction-section">
+            <div class="like-button">
+                <button><span class="pixel-heart">♥</span>Like</button>
+            </div>
+            <div class="comment-section">
+                <input type="text" placeholder="Add a comment...">
+                <button>Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Post 13 -->
+    <div class="post-container">
+        <div class="profile">
+            <img src="img/avatar.png" alt="Anthony">
+            <span>@anthony_thedesigner</span>
+        </div>
+        <img src="img/doom.jpg" alt="Me and Doom (:)">
+        <p>Me and Doom (:</p>
+        <div class="interaction-section">
+            <div class="like-button">
+                <button><span class="pixel-heart">♥</span>Like</button>
+            </div>
+            <div class="comment-section">
+                <input type="text" placeholder="Add a comment...">
+                <button>Submit</button>
+            </div>
+        </div>
+    </div>
+<!-- Footer Section --> <!-- Posts Section -->
+    <div class="posts-feed">
+
+  
+        <!-- Footer Section -->
+        <div class="footer-section">
+            <p>© 2024 The Fog - All Rights Reserved</p>
+        </div>
+    </div>
+
+    <!-- Popup Overlay -->
+    <div id="popup-overlay" onclick="closePopup()" style="display: none; position: fixed; width: 100%; height: 100%; top: 0; left: 0; background-color: rgba(0, 0, 0, 0.7); z-index: 10;"></div>
+
+    <!-- Popup Box -->
+    <div id="popup-box" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; max-width: 600px; background: white; border-radius: 10px; padding: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); z-index: 20;">
+        <div style="display: flex;">
+            <img id="popup-img" src="" alt="Profile Image" style="width: 150px; height: 150px; border-radius: 10px; margin-right: 20px;">
+            <div>
+                <h3 id="popup-name" style="margin-top: 0;"></h3>
+                <h5 id="popup-location" style="color: #888; font-size: 14px;"></h5>
+                <ul id="popup-facts" style="list-style: none; padding: 0;">
+                    <!-- Facts will be populated by JavaScript -->
+                </ul>
+            </div>
+        </div>
+        <button onclick="closePopup()" style="position: absolute; top: 10px; right: 10px; border: none; background: none; font-size: 24px; cursor: pointer;">&times;</button>
+    </div>
+
+    <script>
+        function showPopup(name, location, imgSrc, facts) {
+    document.getElementById('popup-name').textContent = name;
+    document.getElementById('popup-location').textContent = location;
+    document.getElementById('popup-img').src = imgSrc;
+
+    const factsList = document.getElementById('popup-facts');
+    factsList.innerHTML = '';
+    facts.forEach(fact => {
+        let li = document.createElement('li');
+        li.textContent = fact;
+        factsList.appendChild(li);
+    });
+
+    document.getElementById('popup-overlay').style.display = 'block';
+    document.getElementById('popup-box').style.display = 'block';
+}
+
+function closePopup() {
+    document.getElementById('popup-overlay').style.display = 'none';
+    document.getElementById('popup-box').style.display = 'none';
+}
+
+    </script>
+</body>
+</html>

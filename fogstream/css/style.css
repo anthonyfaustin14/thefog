@@ -1,0 +1,125 @@
+body {
+    background-image: url("img/sf.GIF");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    margin: 0;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+h1, h3, p {
+    margin: 0;
+}
+
+h1 {
+    font-family: 'Jacquarda Bastarda 9', sans-serif;
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: yellow;
+}
+
+h3 {
+    font-family: 'Silkscreen', sans-serif;
+    font-size: 14px;
+    margin-bottom: 20px;
+    color: black;
+}
+
+p {
+    font-family: "Pixelify Sans", system-ui;
+    font-size: 17px;
+    color: white;
+}
+
+img + p {
+    color: black;
+}
+
+/* Reusable Box Styling */
+.box-style {
+    margin-top: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    background-color: rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Adds shadow effect */
+}
+
+/* Profile Info Section */
+.profile-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Apply Box Styling to Profile Info */
+.profile-info.box-style {
+    padding: 10px; /* Ensure spacing */
+    background-color: rgba(0, 0, 0, 0.3); /* Same as other sections */
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+.profile-info img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.profile-info h3 {
+    margin: 0;
+}
+
+.about-section {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px dashed #999;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+.friends-section {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #999;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    color: #fff;
+}
+
+.friends-section h3 {
+    margin-top: 40px;
+    font-size: medium;
+    text-align: left;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.playlist-section {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    background-color: rgba(0, 0, 0, 0.3);
+    text-align: center;
+    font-family: "Pixelify Sans", system-ui;
+    color: white;
+    font-size: 14pt;
+}
+
+.playlist-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.playlist-section li {
+    margin: 10px 0;
+}

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <title>The Fog</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jacquarda+Bastarda+9&family=Silkscreen&display=swap" rel="stylesheet">
+    <!-- Fonts -->
+
+    <style>
+        h1, h3 {
+            margin: 0;
+            position: relative; /* Required for the fog effect */
+            opacity: 0;
+            animation: fade-in 2s ease forwards;
+        }
+
+        h1 {
+            font-family: 'Jacquarda Bastarda 9', sans-serif;
+            font-size: 70pt; 
+            animation-delay: 0.5s;
+        }
+        h1:hover {
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 
+                        0 0 20px rgba(255, 255, 255, 0.6); 
+        }
+
+        h3 {
+            font-family: 'Silkscreen', sans-serif;
+            font-size: 40pt;
+            animation-delay: 1s;
+        }
+
+        /* Fog effect using pseudo-element */
+        h1::before, h3::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: -50px;
+            width: 300%;  /* Start with a large fog area */
+            height: 300%;
+            background: rgba(255, 255, 255, 0.5); /* Semi-transparent white to simulate fog */
+            filter: blur(30px); /* Stronger blur to simulate dense fog */
+            animation: fog-in 5s ease-out forwards; /* Moving fog from outside to center, only once */
+            z-index: -1; /* Position behind the text */
+        }
+
+        /* Fog movement: scale down and fade out */
+        @keyframes fog-in {
+            0% {
+                opacity: 1;
+                transform: scale(3); /* Start large, from outside */
+            }
+            100% {
+                opacity: 0;
+                transform: scale(1); /* End at normal size, centered */
+            }
+        }
+
+        body {
+            margin: 0;
+            height: 100vh; /* Set body height to full view height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Prevent scrollbars for full-screen video */
+        }
+
+        #background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1; /* Send video to the background */
+        }
+
+        #topnav {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100%;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Fade-in animation for the text */
+        @keyframes fade-in {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- Video Background -->
+    <video autoplay muted loop id="background-video">
+        <source src="img/homefog.mov" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <header>
+        <nav>
+            <div id="topnav">
+                <h1>The Fog</h1>
+                <h3><a href="fogstream/fogstream.html">The FogStream</a></h3>
+                <h3><a href="https://www.weather.gov/mtr/">Weather</a></h3>
+                <h3><a href="https://www.thelaundromatsf.com">Small Business of the Month</a></h3>
+            </div>
+        </nav>
+    </header>
+</body>
+
+</html>
