@@ -41,19 +41,19 @@
             position: absolute;
             top: -30px;
             left: -50px;
-            width: 300%;  /* Start with a large fog area */
+            width: 300%;  
             height: 300%;
-            background: rgba(255, 255, 255, 0.5); /* Semi-transparent white to simulate fog */
-            filter: blur(30px); /* Stronger blur to simulate dense fog */
-            animation: fog-in 5s ease-out forwards; /* Moving fog from outside to center, only once */
-            z-index: -1; /* Position behind the text */
+            background: rgba(255, 255, 255, 0.5); 
+            filter: blur(30px); 
+            animation: fog-in 5s ease-out forwards; 
+            z-index: -1; 
         }
 
         /* Fog movement: scale down and fade out */
         @keyframes fog-in {
             0% {
                 opacity: 1;
-                transform: scale(3); /* Start large, from outside */
+                transform: scale(3); 
             }
             100% {
                 opacity: 0;
@@ -63,11 +63,11 @@
 
         body {
             margin: 0;
-            height: 100vh; /* Set body height to full view height */
+            height: 100vh; 
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden; /* Prevent scrollbars for full-screen video */
+            overflow: hidden; 
         }
 
         #background-video {

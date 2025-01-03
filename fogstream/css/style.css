@@ -44,7 +44,7 @@ img + p {
     border-radius: 10px;
     border: 1px solid #ddd;
     background-color: rgba(0, 0, 0, 0.3);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Adds shadow effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); 
 }
 
 /* Profile Info Section */
@@ -56,7 +56,7 @@ img + p {
 
 /* Apply Box Styling to Profile Info */
 .profile-info.box-style {
-    padding: 10px; /* Ensure spacing */
+    padding: 10px; 
     background-color: rgba(0, 0, 0, 0.3); /* Same as other sections */
     border: 1px solid #ddd;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
