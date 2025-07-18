@@ -14,7 +14,7 @@
     <style>
         h1, h3 {
             margin: 0;
-            position: relative; /* Required for the fog effect */
+            position: relative; 
             opacity: 0;
             animation: fade-in 2s ease forwards;
         }
@@ -35,7 +35,7 @@
             animation-delay: 1s;
         }
 
-        /* Fog effect using pseudo-element */
+        /* Fog effect */
         h1::before, h3::before {
             content: '';
             position: absolute;
@@ -49,7 +49,6 @@
             z-index: -1; 
         }
 
-        /* Fog movement: scale down and fade out */
         @keyframes fog-in {
             0% {
                 opacity: 1;
@@ -57,7 +56,7 @@
             }
             100% {
                 opacity: 0;
-                transform: scale(1); /* End at normal size, centered */
+                transform: scale(1); 
             }
         }
 
@@ -68,15 +67,17 @@
             justify-content: center;
             align-items: center;
             overflow: hidden; 
+            position: relative;
         }
 
-        #background-video {
+        #background-gif {
             position: fixed;
             top: 0;
             left: 0;
-            min-width: 100%;
-            min-height: 100%;
-            z-index: -1; /* Send video to the background */
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1; 
         }
 
         #topnav {
@@ -93,7 +94,6 @@
             color: inherit;
         }
 
-        /* Fade-in animation for the text */
         @keyframes fade-in {
             0% {
                 opacity: 0;
@@ -107,11 +107,8 @@
 </head>
 
 <body>
-    <!-- Video Background -->
-    <video autoplay muted loop id="background-video">
-        <source src="img/homefog.mov" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
+    <!-- GIF Background -->
+    <img src="img/homefog.gif" alt="Background Fog" id="background-gif">
 
     <header>
         <nav>
@@ -124,5 +121,4 @@
         </nav>
     </header>
 </body>
-
 </html>

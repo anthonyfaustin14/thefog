@@ -1,10 +1,37 @@
-h1 {
-    font-family: "Jacquarda Bastarda 9", serif;
-    font-weight: 200pt;
-    color: yellow;
-    margin: 0;
+/* Main Title + Fog */
+h1::before, h3::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    left: -50px;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 0, 0.4);
+    filter: blur(30px);
+    animation: fog-in 5s ease-out forwards;
+    z-index: -1;
+    pointer-events: none; 
 }
 
+h1 {
+    font-family: "Jacquarda Bastarda 9", serif;
+    font-weight: 200;
+    color: yellow;
+    margin: 0;
+    font-size: 70pt;
+    position: relative;
+    opacity: 0;
+    animation: fade-in 2s ease forwards;
+    animation-delay: 0.5s;
+    cursor: default;
+}
+
+h1:hover {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 
+                 0 0 20px rgba(255, 255, 255, 0.6);
+}
+
+/* Subtitle / Links */
 h3 {
     font-family: 'Silkscreen', sans-serif;
     font-size: 60pt;
@@ -12,22 +39,121 @@ h3 {
     font-style: normal;
     color: whitesmoke;
     margin: 0;
+    position: relative;
+    opacity: 0;
+    animation: fade-in 2s ease forwards;
+    animation-delay: 1s;
 }
 
+/* Nav Container */
 nav {
     width: 100%;
     top: 0;
     left: 0;
     margin: 0;
-    padding: 0; 
+    padding: 0;
 }
 
+/* Topnav Flexbox */
 #topnav {
     display: flex;
-    flex-direction: row; 
-    justify-content: flex-start; 
-    align-items: center; 
-    margin-left: 3%; 
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 3%;
     margin-right: 0;
-    gap: 20px; 
+    gap: 20px;
+}
+
+/* Fog movement animation */
+@keyframes fog-in {
+    0% {
+        opacity: 1;
+        transform: scale(3);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1);
+    }
+}
+
+/* Body */
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Background video */
+#background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+}
+
+/* Link style + hover */
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.3s ease;
+}
+
+a:hover {
+    opacity: 0.7;
+}
+
+/* Fade-in animation */
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Optional: Subtle fog drift background */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: fog-drift 30s infinite linear;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes fog-drift {
+    0% { transform: translate(0,0); }
+    50% { transform: translate(-10%, -10%); }
+    100% { transform: translate(0,0); }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 40pt;
+    }
+
+    h3 {
+        font-size: 24pt;
+    }
+
+    #topnav {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        margin: 0;
+    }
 }
